@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Course {
+    // These are the variables that will be set whenever a class is added to the schedule.
     private String name = "EMPTY";
     private LocalDate date;
     private String room = "";
