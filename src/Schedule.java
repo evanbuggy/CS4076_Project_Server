@@ -6,6 +6,7 @@ public class Schedule {
 
     public Schedule() {
         for (int i = 9; i <= 18; i++) {
+            // Initialising the HashMap. 9am and 6pm are the time slots for class.
             list.put(i, new Course());
         }
     }
