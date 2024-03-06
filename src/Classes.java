@@ -3,19 +3,47 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Classes {
+    // This is the list that contains all the classes that will be on.
+    // When instantiated by Schedule, that means that there will be 8 of these
+    // in total, one for each time slot (9am - 5pm).
     private ArrayList<Course> list = new ArrayList<Course>();
 
     public String addClass(Course c) {
         LocalDate date = c.getDate();
-        String name = c.getName();
         String room = c.getRoom();
 
         for (Course course : list) {
-            if (date == course.getDate() && Objects.equals(name, course.getName()) && Objects.equals(room, course.getRoom())) {
+            if (date == course.getDate() && Objects.equals(room, course.getRoom())) {
                 return "ADD_CLASS_FAIL";
             }
         }
         list.add(c);
         return "ADD_CLASS_SUCCESS";
+    }
+
+    public String removeClass(Course c) {
+        LocalDate date = c.getDate();
+        String room = c.getRoom();
+        String name = c.getName();
+        // This time we create a variable for the name of the course.
+        // This is because we add a 2nd condition where if the name the
+        // client typed in is incorrect, the class cannot be removed.
+
+        for (Course course : list) {
+            if (date == course.getDate() && Objects.equals(room, course.getRoom())) {
+                if (Objects.equals(name, course.getName())) {
+                    list.remove(course);
+                    return "REMOVE_CLASS_SUCCESS";
+                }
+                else {
+                    return "REMOVE_CLASS_NAME_INVALID";
+                }
+            }
+        }
+        return "REMOVE_CLASS_FAIL";
+    }
+
+    public ArrayList<Course> getClasses() {
+        return list;
     }
 }

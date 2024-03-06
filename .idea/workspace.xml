@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1ac2e5d-09c5-4c8f-a660-249a25b2f3a7" name="Changes" comment="GitHub">
-      <change afterPath="$PROJECT_DIR$/src/Classes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TEST_Classes.java" afterDir="false" />
+    <list default="true" id="a1ac2e5d-09c5-4c8f-a660-249a25b2f3a7" name="Changes" comment="Schedule stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Course.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Schedule.java" afterDir="false" />
     </list>
@@ -72,6 +71,7 @@
       <workItem from="1709677886526" duration="6894000" />
       <workItem from="1709727976716" duration="5827000" />
       <workItem from="1709739013915" duration="1159000" />
+      <workItem from="1709760648228" duration="5959000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -97,7 +97,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709686768326</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Schedule stuff">
+      <option name="closed" value="true" />
+      <created>1709760729955</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1709760729955</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,6 +114,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init" />
     <MESSAGE value="GitHub" />
-    <option name="LAST_COMMIT_MESSAGE" value="GitHub" />
+    <MESSAGE value="Schedule stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Schedule stuff" />
   </component>
 </project>

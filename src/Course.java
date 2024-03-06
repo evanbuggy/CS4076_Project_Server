@@ -6,12 +6,14 @@ public class Course {
     private LocalDate date;
     private String room = "";
 
+    // Constructor with args
     public Course(String name, String room, LocalDate date) {
         this.name = name;
         this.date = date;
         this.room = room;
     }
 
+    // Setters and Getters
     public void setName(String name) {
         this.name = name;
     }
