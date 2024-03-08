@@ -5,13 +5,14 @@ import java.util.InputMismatchException;
 public class Server {
 
     private static ServerSocket servSock;
-    private static final int PORT = 1234;
+    private static final int PORT = 9999;
 
     public static void main(String[] args) {
         System.out.println("Opening port...\n");
         try
         {
-            servSock = new ServerSocket(PORT);      //Step 1.
+            servSock = new ServerSocket(PORT);
+            System.out.println("New Socket with port " + PORT);
         }
         catch(IOException e)
         {
@@ -30,11 +31,16 @@ public class Server {
     {
         Socket link = null;
         try {
+            System.out.println("Waiting for connection...");
             link = servSock.accept();
+            System.out.println("Connection established with " + link.getInetAddress());
             BufferedReader in = new BufferedReader(new InputStreamReader(link.getInputStream()));
+            System.out.println("InputStream established");
             PrintWriter out = new PrintWriter(link.getOutputStream(), true);
+            System.out.println("OutputStream established");
 
             try {
+                System.out.println("Waiting for readLine()...");
                 String message = in.readLine();
                 System.out.println("Command: " + message);
                 out.println("Response from Server (Capitalized Message): " + message.toUpperCase());
