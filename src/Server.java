@@ -1,11 +1,11 @@
 import java.io.*;
 import java.net.*;
+import java.util.InputMismatchException;
 
 public class Server {
 
     private static ServerSocket servSock;
     private static final int PORT = 1234;
-    private static int clientConnections = 0;
 
     public static void main(String[] args) {
         System.out.println("Opening port...\n");
@@ -28,17 +28,20 @@ public class Server {
 
     private static void run()
     {
-        Socket link = null;                        //Step 2.
-        try
-        {
-            link = servSock.accept();               //Step 2.
-            clientConnections++;
-            BufferedReader in = new BufferedReader( new InputStreamReader(link.getInputStream())); //Step 3.
-            PrintWriter out = new PrintWriter(link.getOutputStream(),true); //Step 3.
+        Socket link = null;
+        try {
+            link = servSock.accept();
+            BufferedReader in = new BufferedReader(new InputStreamReader(link.getInputStream()));
+            PrintWriter out = new PrintWriter(link.getOutputStream(), true);
 
-            String message = in.readLine();         //Step 4.
-            System.out.println("Message received from client: " + clientConnections + "  "+ message);
-            out.println("Response from Server (Capitalized Message): " + message.toUpperCase());     //Step 4.
+            try {
+                String message = in.readLine();
+                System.out.println("Command: " + message);
+                out.println("Response from Server (Capitalized Message): " + message.toUpperCase());
+            }
+            catch (InputMismatchException e) {
+                System.out.println("The message received from the client is not a valid input!");
+            }
         }
         catch(IOException e)
         {

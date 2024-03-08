@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1ac2e5d-09c5-4c8f-a660-249a25b2f3a7" name="Changes" comment="Schedule stuff">
+    <list default="true" id="a1ac2e5d-09c5-4c8f-a660-249a25b2f3a7" name="Changes" comment="Init">
+      <change afterPath="$PROJECT_DIR$/src/Input.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Schedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +44,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/buggy/CS4076_Project_Server/CS4076_Project_Server&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -56,7 +56,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-78a6f59c" />
       </set>
     </attachedChunks>
   </component>
@@ -72,6 +72,8 @@
       <workItem from="1709727976716" duration="5827000" />
       <workItem from="1709739013915" duration="1159000" />
       <workItem from="1709760648228" duration="5959000" />
+      <workItem from="1709894255319" duration="847000" />
+      <workItem from="1709899918455" duration="3704000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
