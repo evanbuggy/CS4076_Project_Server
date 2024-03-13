@@ -8,11 +8,26 @@ public class Input {
     Schedule s = new Schedule();
 
     public String put(String in) {
-        // Therefore the "temp" array should have a size of 5.
+        // The "temp" array should have a size of 5.
+        if (Objects.equals(in, "STOP")) {
+            return "TERMINATE";
+        }
         String success = "";
-        String[] temp = in.split("_");
+        String[] temp;
         try {
-            switch(temp[1]) {
+            temp = in.split("_");
+        }
+        catch (NullPointerException e) {
+            System.out.println("Input: Client has disconnected and/or the message received is null");
+            return "TERMINATE";
+        }
+        System.out.print("Input: The parameters of the message are: ");
+        for (int i = 0; i < temp.length; i++) {
+            System.out.print(temp[i] + ", ");
+        }
+        System.out.println();
+        try {
+            switch(temp[0]) {
                 // "METHOD_NAME_ROOM_YYYY-MM-DD_TIME"
                 case "ADD":
                     System.out.println("Input: ADD has been called.");

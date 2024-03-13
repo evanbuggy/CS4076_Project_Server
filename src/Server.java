@@ -38,15 +38,14 @@ public class Server {
             System.out.println("InputStream established");
             PrintWriter out = new PrintWriter(link.getOutputStream(), true);
             System.out.println("OutputStream established");
+            Input command = new Input();
 
-            try {
+            while (true) {
                 System.out.println("Waiting for readLine()...");
                 String message = in.readLine();
                 System.out.println("Command: " + message);
-                out.println("Response from Server (Capitalized Message): " + message.toUpperCase());
-            }
-            catch (InputMismatchException e) {
-                System.out.println("The message received from the client is not a valid input!");
+                out.println("Response from Server (Capitalized Message): " + command.put(message));
+                break;
             }
         }
         catch(IOException e)
