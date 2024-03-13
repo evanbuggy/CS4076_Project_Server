@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Schedule {
 
     // This HashMap will contain the classes for the time slots between 9am and 6pm.
-    private HashMap<Integer, Classes> list = new HashMap<Integer, Classes>();
+    private final HashMap<Integer, Classes> list = new HashMap<Integer, Classes>();
 
     public Schedule() {
         for (int i = 9; i <= 17; i++) {
@@ -27,13 +27,13 @@ public class Schedule {
         return list.get(time).removeClass(c);
     }
 
-    public ArrayList<String> showClassesDate(LocalDate date) {
+    public ArrayList<String> showClasses(LocalDate date) {
         ArrayList<String> classes = new ArrayList<String>();
         list.forEach((k, v) -> {
             ArrayList<Course> temp = v.getClasses();
             for (Course c : temp) {
                 if (date == c.getDate()) {
-                    classes.add(c.getName() + ",\n" + c.getRoom());
+                    classes.add(k + "_" + c.getName() + "_" + c.getRoom());
                 }
             }
         });
