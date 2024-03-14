@@ -1,68 +1,76 @@
 import java.io.*;
 import java.net.*;
 import java.util.InputMismatchException;
+import java.util.Objects;
 
 public class Server {
-
-    private static ServerSocket servSock;
     private static final int PORT = 9999;
+    private static ServerSocket sock;
 
     public static void main(String[] args) {
         System.out.println("Opening port...\n");
-        try
-        {
-            servSock = new ServerSocket(PORT);
+        try {
+            sock = new ServerSocket(PORT);
             System.out.println("New Socket with port " + PORT);
         }
-        catch(IOException e)
-        {
+        catch (IOException e) {
             System.out.println("Unable to attach to port!");
             System.exit(1);
         }
 
-        do
-        {
+        do {
             run();
-        }while (true);
+        } while (true);
 
     }
 
-    private static void run()
-    {
+    private static void run() {
+
+        Input command = new Input();
         Socket link = null;
+
         try {
             System.out.println("Waiting for connection...");
-            link = servSock.accept();
+            link = sock.accept();
             System.out.println("Connection established with " + link.getInetAddress());
             BufferedReader in = new BufferedReader(new InputStreamReader(link.getInputStream()));
             System.out.println("InputStream established");
             PrintWriter out = new PrintWriter(link.getOutputStream(), true);
             System.out.println("OutputStream established");
-            Input command = new Input();
 
             while (true) {
-                System.out.println("Waiting for readLine()...");
-                String message = in.readLine();
-                System.out.println("Command: " + message);
-                out.println("Response from Server (Capitalized Message): " + command.put(message));
-                break;
+                String message = "";
+                System.out.println("Waiting to read user input stream...");
+
+                try {
+                    message = in.readLine();
+                }
+                catch (SocketException e) {
+                    System.out.println("Client has abruptly exited!");
+                    break;
+                }
+
+                System.out.println("Message: " + message);
+                String response = command.put(message);
+                out.println(response);
+                System.out.println("Response: " + response);
+                if (Objects.equals(message, "TERMINATE")) {
+                    break;
+                }
             }
         }
-        catch(IOException e)
-        {
+        catch(IOException e) {
             e.printStackTrace();
         }
-        finally
-        {
+        finally {
             try {
-                System.out.println("\n* Closing connection... *");
-                link.close();				    //Step 5.
+                System.out.println("\n*** DISCONNECTING... ***");
+                link.close();
             }
-            catch(IOException e)
-            {
-                System.out.println("Unable to disconnect!");
+            catch (IOException e) {
+                System.out.println("\n*** UNABLE TO DISCONNECT, EXITING... ***");
                 System.exit(1);
             }
         }
-    } // finish run method
-} // finish the class
+    }
+}

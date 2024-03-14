@@ -13,7 +13,7 @@ public class Classes {
         String room = c.getRoom();
 
         for (Course course : list) {
-            if (date == course.getDate() && Objects.equals(room, course.getRoom())) {
+            if (date.equals(course.getDate()) && Objects.equals(room, course.getRoom())) {
                 return "ADD_CLASS_FAIL";
             }
         }
@@ -30,7 +30,7 @@ public class Classes {
         // client typed in is incorrect, the class cannot be removed.
 
         for (Course course : list) {
-            if (date == course.getDate() && Objects.equals(room, course.getRoom())) {
+            if (date.equals(course.getDate()) && Objects.equals(room, course.getRoom())) {
                 if (Objects.equals(name, course.getName())) {
                     list.remove(course);
                     return "REMOVE_CLASS_SUCCESS";

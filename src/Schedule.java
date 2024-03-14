@@ -32,7 +32,20 @@ public class Schedule {
         list.forEach((k, v) -> {
             ArrayList<Course> temp = v.getClasses();
             for (Course c : temp) {
-                if (date == c.getDate()) {
+                if (date.equals(c.getDate())) {
+                    classes.add(k + "_" + c.getName() + "_" + c.getRoom());
+                }
+            }
+        });
+        return classes;
+    }
+
+    public ArrayList<String> showClassesNamed(LocalDate date, String name) {
+        ArrayList<String> classes = new ArrayList<String>();
+        list.forEach((k, v) -> {
+            ArrayList<Course> temp = v.getClasses();
+            for (Course c : temp) {
+                if (date.equals(c.getDate()) && Objects.equals(name, c.getName())) {
                     classes.add(k + "_" + c.getName() + "_" + c.getRoom());
                 }
             }

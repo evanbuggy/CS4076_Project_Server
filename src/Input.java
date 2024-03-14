@@ -40,12 +40,12 @@ public class Input {
                 case "VIEW":
                     System.out.println("Input: VIEW has been called.");
                     return view(temp);
-                // "METHOD_NAME_YYYY-MM-DD"
+                // "METHOD_YYYY-MM-DD_NAME"
                 case "VIEWCLASS":
                     System.out.println("Input: VIEWCLASS has been called.");
                     return viewClass(temp);
                 default:
-                    throw new IncorrectActionException("The input is an invalid response from the client!");
+                    throw new IncorrectActionException("ERR: The input is an invalid response from the client!");
             }
         }
         catch (IncorrectActionException e) {
@@ -69,26 +69,42 @@ public class Input {
         return s.remove(in[1], in[2], LocalDate.parse(in[3]), Integer.parseInt(in[4]));
     }
 
-    private String view(String[] in) {
-        return null;
-    }
-
     private String viewClass(String[] in) {
-        LocalDate d = checkDate(in[3]);
+        LocalDate d = checkDate(in[1]);
         try {
             if (d == null) {
-                throw new IncorrectActionException("Invalid date!");
+                throw new IncorrectActionException("ERR: Invalid date!");
             }
         }
         catch (IncorrectActionException e) {
             return e.getMessage();
         }
-        String result = "";
-        ArrayList<String> temp = s.showClasses(d);
-        for (int i = 0; i < temp.size(); i++) {
-            result += temp.get(i) + "\n";
+        StringBuilder result = new StringBuilder();
+        ArrayList<String> temp = s.showClassesNamed(d, in[2]);
+        for (String string : temp) {
+            // ~ is used as the separator between entries
+            result.append(string).append("~");
         }
-        return result;
+        return result.toString();
+    }
+
+    private String view(String[] in) {
+        LocalDate d = checkDate(in[1]);
+        try {
+            if (d == null) {
+                throw new IncorrectActionException("ERR: Invalid date!");
+            }
+        }
+        catch (IncorrectActionException e) {
+            return e.getMessage();
+        }
+        StringBuilder result = new StringBuilder();
+        ArrayList<String> temp = s.showClasses(d);
+        for (String string : temp) {
+            // ~ is used as the separator between entries
+            result.append(string).append("~");
+        }
+        return result.toString();
     }
 
     private LocalDate checkDate(String d) {
@@ -116,14 +132,14 @@ public class Input {
     private String check(String[] in) {
         try {
             if (in.length != 5) {
-                throw new IncorrectActionException("Not enough arguments!");
+                throw new IncorrectActionException("ERR: Not enough arguments!");
             }
             LocalDate d = checkDate(in[3]);
             if (d == null) {
-                throw new IncorrectActionException("Invalid date!");
+                throw new IncorrectActionException("ERR: Invalid date!");
             }
             if (!checkTime(in[4])) {
-                throw new IncorrectActionException("Invalid time slot!");
+                throw new IncorrectActionException("ERR: Invalid time slot!");
             }
         }
         catch (IncorrectActionException e) {
