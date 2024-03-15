@@ -17,12 +17,22 @@ public class Schedule {
 
     public String add(String name, String room, LocalDate date, int time) {
         Course c = new Course(name, room, date);
-        return list.get(time).addClass(c);
+        String s = list.get(time).addClass(c);
+        return switch (s) {
+            case "ADD_CLASS_SUCCESS" -> "Successfully added class!";
+            case "ADD_CLASS_FAIL" -> "There is already a class in that room with the same date and time!";
+            default -> s;
+        };
     }
 
     public String remove(String name, String room, LocalDate date, int time) {
         Course c = new Course(name, room, date);
-        return list.get(time).removeClass(c);
+        String s = list.get(time).removeClass(c);
+        return switch (s) {
+            case "REMOVE_CLASS_SUCCESS" -> "Successfully removed class!";
+            case "REMOVE_CLASS_FAIL" -> "That class does not exist!";
+            default -> s;
+        };
     }
 
     public ArrayList<String> showClasses(LocalDate date) {

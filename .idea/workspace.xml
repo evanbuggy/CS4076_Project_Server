@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1ac2e5d-09c5-4c8f-a660-249a25b2f3a7" name="Changes" comment="Data retention for client disconnect">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a1ac2e5d-09c5-4c8f-a660-249a25b2f3a7" name="Changes" comment="removing csv">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CS4076_Project_Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CS4076_Project_Server.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IncorrectActionException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IncorrectActionException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Input.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Schedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Schedule.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +91,7 @@
       <workItem from="1709760648228" duration="5959000" />
       <workItem from="1710338495645" duration="6311000" />
       <workItem from="1710417324574" duration="3961000" />
-      <workItem from="1710504310102" duration="11967000" />
+      <workItem from="1710504310102" duration="12251000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -160,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710421336063</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="removing csv">
+      <option name="closed" value="true" />
+      <created>1710516746041</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1710516746041</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,6 +170,7 @@
     <MESSAGE value="IncorrectActionException boilerplate and Input class" />
     <MESSAGE value="Receiving multiple messages from a client and debugging" />
     <MESSAGE value="Data retention for client disconnect" />
-    <option name="LAST_COMMIT_MESSAGE" value="Data retention for client disconnect" />
+    <MESSAGE value="removing csv" />
+    <option name="LAST_COMMIT_MESSAGE" value="removing csv" />
   </component>
 </project>
