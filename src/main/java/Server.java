@@ -53,7 +53,7 @@ public class Server {
                 String response = command.put(message);
                 out.println(response);
                 System.out.println("Response: " + response);
-                if (Objects.equals(message, "TERMINATE")) {
+                if (Objects.equals(message, "STOP")) {
                     System.out.println("The client has requested to end communication.");
                     break;
                 }
