@@ -17,13 +17,11 @@ public class Schedule {
 
     public String add(String name, String room, LocalDate date, int time) {
         Course c = new Course(name, room, date);
-        // Returns whether adding the class succeeded or failed.
         return list.get(time).addClass(c);
     }
 
     public String remove(String name, String room, LocalDate date, int time) {
         Course c = new Course(name, room, date);
-        // Returns whether removing the class succeeded or failed.
         return list.get(time).removeClass(c);
     }
 
