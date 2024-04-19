@@ -69,6 +69,19 @@ public class Input {
         return s.remove(in[1], in[2], LocalDate.parse(in[3]), Integer.parseInt(in[4]));
     }
 
+    private String earlyLectures(String[] in) {
+        LocalDate d = checkDate(in[1]);
+        try {
+            if (d == null) {
+                throw new IncorrectActionException("ERR: Invalid date!");
+            }
+        }
+        catch (IncorrectActionException e) {
+            return e.getMessage();
+        }
+        ArrayList<String> temp = s.showClasses(d);
+    }
+
     private String viewClass(String[] in) {
         LocalDate d = checkDate(in[1]);
         try {
