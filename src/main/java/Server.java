@@ -10,7 +10,9 @@ import java.util.Objects;
 public class Server {
     private static final int PORT = 9999;
     private static ServerSocket sock;
-    boolean exiting = false;
+    private static int totalConnections = 0;
+    static int currentConnections = 0;
+    static Input command = new Input();
 
     public static void main(String[] args) {
         System.out.println("Opening port...\n");
@@ -23,8 +25,6 @@ public class Server {
             System.exit(1);
         }
 
-        Input command = new Input();
-
         do {
 
             Socket link = null;
@@ -32,6 +32,29 @@ public class Server {
             try {
                 System.out.println("Waiting for connection...");
                 link = sock.accept();
+                Thread thr = new Thread(new ClientThread(link));
+                totalConnections++;
+                currentConnections++;
+                System.out.println("Current connections: " + currentConnections);
+                System.out.println("Total connections: " + totalConnections);
+                thr.start();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        } while (true);
+    }
+
+    static class ClientThread implements Runnable {
+
+        private Socket link;
+
+        public ClientThread(Socket link) {
+            this.link = link;
+        }
+
+        public void run() {
+            try {
                 System.out.println("Connection established with " + link.getInetAddress());
                 BufferedReader in = new BufferedReader(new InputStreamReader(link.getInputStream()));
                 System.out.println("InputStream established");
@@ -46,31 +69,27 @@ public class Server {
                 }
                 catch (SocketException e) {
                     System.out.println("Client has abruptly exited/failed to pass an output stream!");
-                    break;
                 }
 
                 System.out.println("Message: " + message);
+
                 String response = command.put(message);
                 out.println(response);
                 System.out.println("Response: " + response);
-                if (Objects.equals(message, "STOP")) {
-                    System.out.println("The client has requested to end communication.");
-                    break;
-                }
             }
             catch(IOException e) {
                 e.printStackTrace();
-            }
-            finally {
+            } finally {
                 try {
                     System.out.println("\n*** DISCONNECTING... ***");
                     link.close();
+                    Server.currentConnections--;
                 }
                 catch (IOException e) {
                     System.out.println("\n*** UNABLE TO DISCONNECT, EXITING... ***");
                     System.exit(1);
                 }
             }
-        } while (true);
+        }
     }
 }

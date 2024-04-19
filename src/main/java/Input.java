@@ -7,7 +7,7 @@ public class Input {
 
     Schedule s = new Schedule();
 
-    public String put(String in) {
+    public synchronized String put(String in) {
         // The "temp" array should have a size of 5.
         if (Objects.equals(in, "STOP")) {
             return "TERMINATE";
