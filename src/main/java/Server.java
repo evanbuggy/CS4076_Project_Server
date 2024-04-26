@@ -30,7 +30,18 @@ public class Server {
             Socket link = null;
 
             try {
-                System.out.println("Waiting for connection...");
+                // Uncomment the below lines to quickly test early lectures functionality
+
+                //System.out.println("Waiting for connection...");
+                //command.put("ADD_EarlyClass_dumbassRoom_2024-04-26_9");
+                //command.put("ADD_AnotherEarlyClass_Schooman_2024-04-27_9");
+                //command.put("ADD_LOL_Schooman_2024-04-27_10");
+                //command.put("ADD_LMAO_help_2024-04-27_14");
+                //command.put("ADD_AbdulLecture_Kemmy_2024-04-27_10");
+                //command.put("ADD_CoolClass_Schooman_2024-04-27_16");
+                //command.put("EARLYLECTURES");
+                //System.out.println(command.put("VIEW_2024-04-26"));
+                //System.out.println(command.put("VIEW_2024-04-27"));
                 link = sock.accept();
                 Thread thr = new Thread(new ClientThread(link));
                 totalConnections++;

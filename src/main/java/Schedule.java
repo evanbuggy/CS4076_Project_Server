@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Schedule {
 
     // This HashMap will contain the classes for the time slots between 9am and 6pm.
-    private final HashMap<Integer, Classes> list = new HashMap<Integer, Classes>();
+    private HashMap<Integer, Classes> list = new HashMap<Integer, Classes>();
 
     public Schedule() {
         for (int i = 9; i <= 17; i++) {
@@ -59,5 +59,21 @@ public class Schedule {
             }
         });
         return classes;
+    }
+
+    public HashMap<Integer, Classes> getMap() {
+        return list;
+    }
+
+    public void setMap(HashMap<Integer, Classes> map) {
+        list = map;
+    }
+
+    public Classes getClassesAt(int k) {
+        return list.get(k);
+    }
+
+    public void setClassesAt(int k, Classes v) {
+        list.put(k, v);
     }
 }

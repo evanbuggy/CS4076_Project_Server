@@ -46,4 +46,26 @@ public class Classes {
     public ArrayList<Course> getClasses() {
         return list;
     }
+
+    public Course getClass(int i) {
+        return list.get(i);
+    }
+
+    public int getSize() {
+        return list.size();
+    }
+
+    public void addFromOtherClass(ArrayList<Course> c) {
+        for (Course course : c) {
+            addClass(course);
+        }
+    }
+
+    public void printCourses() {
+        System.out.println("This time interval has the following classes:");
+        for (Course c : list) {
+            System.out.println(c.getName() + ", " + c.getRoom() + ", " + c.getDate());
+        }
+        System.out.println();
+    }
 }

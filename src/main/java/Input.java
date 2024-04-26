@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Input {
@@ -44,6 +45,10 @@ public class Input {
                 case "VIEWCLASS":
                     System.out.println("Input: VIEWCLASS has been called.");
                     return viewClass(temp);
+                // "METHOD"
+                case "EARLYLECTURES":
+                    System.out.println("Input: EARLYLECTURES has been called.");
+                    return earlyLectures();
                 default:
                     throw new IncorrectActionException("ERR: The input is an invalid response from the client!");
             }
@@ -69,17 +74,36 @@ public class Input {
         return s.remove(in[1], in[2], LocalDate.parse(in[3]), Integer.parseInt(in[4]));
     }
 
-    private String earlyLectures(String[] in) {
-        LocalDate d = checkDate(in[1]);
-        try {
-            if (d == null) {
-                throw new IncorrectActionException("ERR: Invalid date!");
+    private String earlyLectures() {
+        System.out.println("--- earlyLectures() CALLED ---");
+        HashMap<Integer, Classes> newMap = s.getMap();
+        newMap.forEach((k, v) -> {
+            if (k != 9) {
+                System.out.println("The key is " + k);
+                Classes earlySlots = s.getMap().get(9);
+                earlySlots.printCourses();
+                System.out.println("*** Fork/Join being called from Input class...");
+                Classes unable_to_move = EarlyLectureSearch.Search(earlySlots, v);
+                unable_to_move.printCourses();
+                for (int i = 0; i < v.getSize(); i++) {
+                    for (int j = 0; j < unable_to_move.getSize(); j++) {
+                        if (!v.getClass(i).getDate().equals(unable_to_move.getClass(j).getDate()) ||
+                            !Objects.equals(v.getClass(i).getRoom(), unable_to_move.getClass(j).getRoom())) {
+
+                            System.out.println("Moving class to 9am slot...");
+                            Classes temp = newMap.get(9);
+                            temp.addClass(v.getClass(i));
+                            newMap.put(9, temp);
+                            v.removeClass(v.getClass(i));
+                        }
+                    }
+                }
+                System.out.println("Final result for " + k + ":");
+                v.printCourses();
+                System.out.println("*** Looping to next key in earlyLectures()...");
             }
-        }
-        catch (IncorrectActionException e) {
-            return e.getMessage();
-        }
-        ArrayList<String> temp = s.showClasses(d);
+        });
+        return "Done!";
     }
 
     private String viewClass(String[] in) {
