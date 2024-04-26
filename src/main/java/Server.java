@@ -42,6 +42,10 @@ public class Server {
                 //command.put("EARLYLECTURES");
                 //System.out.println(command.put("VIEW_2024-04-26"));
                 //System.out.println(command.put("VIEW_2024-04-27"));
+
+//                command.put("ADD_LMAO_help_2024-04-27_14");
+//                command.put("EARLYLECTURES");
+//                System.out.println(command.put("VIEW_2024-04-27"));
                 link = sock.accept();
                 Thread thr = new Thread(new ClientThread(link));
                 totalConnections++;

@@ -84,18 +84,28 @@ public class Input {
                 earlySlots.printCourses();
                 System.out.println("*** Fork/Join being called from Input class...");
                 Classes unable_to_move = EarlyLectureSearch.Search(earlySlots, v);
+
                 unable_to_move.printCourses();
                 for (int i = 0; i < v.getSize(); i++) {
-                    for (int j = 0; j < unable_to_move.getSize(); j++) {
-                        if (!v.getClass(i).getDate().equals(unable_to_move.getClass(j).getDate()) ||
-                            !Objects.equals(v.getClass(i).getRoom(), unable_to_move.getClass(j).getRoom())) {
+                    if (!unable_to_move.getClasses().isEmpty()) {
+                        for (int j = 0; j < unable_to_move.getSize(); j++) {
+                            if (!v.getClass(i).getDate().equals(unable_to_move.getClass(j).getDate()) ||
+                                !Objects.equals(v.getClass(i).getRoom(), unable_to_move.getClass(j).getRoom())) {
 
-                            System.out.println("Moving class to 9am slot...");
-                            Classes temp = newMap.get(9);
-                            temp.addClass(v.getClass(i));
-                            newMap.put(9, temp);
-                            v.removeClass(v.getClass(i));
+                                System.out.println("Moving class to 9am slot...");
+                                Classes temp = newMap.get(9);
+                                temp.addClass(v.getClass(i));
+                                newMap.put(9, temp);
+                                v.removeClass(v.getClass(i));
+                            }
                         }
+                    }
+                    else {
+                        System.out.println("No classes at 9am! Moving...");
+                        Classes temp = newMap.get(9);
+                        temp.addClass(v.getClass(i));
+                        newMap.put(9, temp);
+                        v.removeClass(v.getClass(i));
                     }
                 }
                 System.out.println("Final result for " + k + ":");
